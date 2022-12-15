@@ -14,7 +14,7 @@ const Home = ({ navigation }) => {
                 setList([...li])
             })
     }
-    console.log('list', list)
+    // console.log('list', list)
     useEffect(() => {
         getData()
     }, [])
