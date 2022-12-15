@@ -5,6 +5,7 @@ import Home from '../screens/Home';
 import RegisterVehicle from '../screens/RegisterVehicle';
 import AddBooking from '../screens/AddBooking';
 import Bookings from '../screens/Bookings';
+import Vehicle from '../screens/Vehicle';
 
 
 const AppNavigation = () => {
@@ -18,6 +19,7 @@ const AppNavigation = () => {
                     <Stack.Screen name="Register Vehicle" component={RegisterVehicle} />
                     <Stack.Screen name="Add Booking" component={AddBooking} />
                     <Stack.Screen name="Bookings" component={Bookings} />
+                    <Stack.Screen name="Vehicle" component={Vehicle} />
                 </Stack.Navigator>
             </NavigationContainer>
         </>
