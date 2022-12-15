@@ -23,12 +23,12 @@ const AddBooking = ({ navigation, route }) => {
   return (
     <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, paddingVertical: 20 }]}>
       <Text style={{ fontSize: 20, color: 'black' }}>Create Vehicle Booking</Text>
-      <View style={{ height: '70%', paddingVertical: 30 }}>
+      <View style={[styles.bgWhite, { height: '50%', paddingVertical: 0, marginVertical: 10, borderRadius: 10 }]}>
+        <View>
+          <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Personal Details</Text>
+        </View>
         <ScrollView>
-          <View style={[styles.bgWhite, { borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15, marginBottom: 20 }]}>
-            <View>
-              <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Personal Details</Text>
-            </View>
+          <View style={{ borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15 }}>
             <View>
               <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='User Name' />
             </View>
@@ -48,26 +48,26 @@ const AddBooking = ({ navigation, route }) => {
               <SMTextInput onChangeText={(e) => setModel({ ...model, dropPoint: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Drop Point' />
             </View>
           </View>
-          <View style={[styles.bgWhite, { borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15 }]}>
-            <View>
-              <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Vehicle Details</Text>
-            </View>
-            <View>
-              <SMTextInput editable={false} value={vehicleObj.vehicleName} style={style.input} placeholderTextColor='#06283D' placeholder='Vehicle Name' />
-            </View>
-            <View>
-              <SMTextInput editable={false} value={vehicleObj.vehicleType} style={style.input} placeholderTextColor='#06283D' placeholder='Vehicle Type' />
-            </View>
-            <View>
-              <SMTextInput editable={false} value={vehicleObj.noOfSeats} style={style.input} placeholderTextColor='#06283D' placeholder='No of Seats' />
-            </View>
-          </View>
         </ScrollView>
+      </View>
+      <View style={[styles.bgWhite, { borderRadius: 15, paddingHorizontal: 20, paddingVertical: 5 }]}>
+        <View>
+          <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Vehicle Details</Text>
+        </View>
+        <View>
+          <SMTextInput editable={false} value={vehicleObj.vehicleName} style={style.input} placeholderTextColor='#06283D' placeholder='Vehicle Name' />
+        </View>
+        <View>
+          <SMTextInput editable={false} value={vehicleObj.vehicleType} style={style.input} placeholderTextColor='#06283D' placeholder='Vehicle Type' />
+        </View>
+        <View>
+          <SMTextInput editable={false} value={vehicleObj.noOfSeats} style={style.input} placeholderTextColor='#06283D' placeholder='No of Seats' />
+        </View>
       </View>
       <View style={{ marginTop: 10, position: 'absolute', bottom: 30, left: 20, right: 20 }}>
         <SMTouchableOpacity
           touchableStyle={[styles.bgDark, { paddingVertical: 10, borderRadius: 10 }]}
-          textStyle={[styles.colorWhite, { textAlign: 'center', fontSize: 20, fontWeight:'bold' }]}
+          textStyle={[styles.colorWhite, { textAlign: 'center', fontSize: 20, fontWeight: 'bold' }]}
           value='Book Now'
           onPress={bookNow} />
       </View>

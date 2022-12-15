@@ -33,7 +33,7 @@ const Vehicle = ({ navigation, route }) => {
                     <Text>End Destination: {obj.endDest}</Text>
                 </View>
 
-                <View style={[styles.bgWhite, { borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15, marginVertical: 30 }]}>
+                <View style={[styles.bgWhite, { position: 'absolute', bottom: 100, left: 0, right: 0, borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15, marginVertical: 30 }]}>
                     <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Review</Text>
                     <ScrollView>
                         {reviewList.map((e, i) => (
