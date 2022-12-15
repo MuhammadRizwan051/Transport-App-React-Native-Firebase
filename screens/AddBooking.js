@@ -33,19 +33,19 @@ const AddBooking = ({ navigation, route }) => {
               <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='User Name' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Contact' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, contact: e })} keyboardType='Numeric' style={style.input} placeholderTextColor='#06283D' placeholder='Contact' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='CNIC' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, cnic: e })} keyboardType='Numeric' style={style.input} placeholderTextColor='#06283D' placeholder='CNIC' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Address' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, address: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Address' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Pick Up Point' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, pickUpPoint: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Pick Up Point' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Drop Point' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, dropPoint: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Drop Point' />
             </View>
           </View>
           <View style={[styles.bgWhite, { borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15 }]}>
@@ -67,7 +67,7 @@ const AddBooking = ({ navigation, route }) => {
       <View style={{ marginTop: 10, position: 'absolute', bottom: 30, left: 20, right: 20 }}>
         <SMTouchableOpacity
           touchableStyle={[styles.bgDark, { paddingVertical: 10, borderRadius: 10 }]}
-          textStyle={[styles.colorLight, { textAlign: 'center', fontSize: 20 }]}
+          textStyle={[styles.colorWhite, { textAlign: 'center', fontSize: 20, fontWeight:'bold' }]}
           value='Book Now'
           onPress={bookNow} />
       </View>
