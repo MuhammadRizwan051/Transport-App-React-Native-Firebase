@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
     return (
         <>
             <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, paddingVertical: 20 }]}>
-                <View style={{ alignItems: 'center', }}>
+                <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity style={{ marginBottom: 10, backgroundColor: 'black', width: '100%', paddingVertical: 10 }} onPress={() => navigation.navigate('Register Vehicle')}>
                         <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>Register Vehicle</Text>
                     </TouchableOpacity>
@@ -35,7 +35,7 @@ const Home = ({ navigation }) => {
                 </View>
 
                 <ScrollView>
-                    <View style={{ flexDirection: 'row', borderWidth: 1, flexWrap: 'wrap' }}>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {list.map((e, i) => (
                             <TouchableOpacity onPress={() => navigation.navigate('Vehicle', e)} style={{ paddingHorizontal: 10, paddingVertical: 10, width: '50%' }}>
                                 <View key={i} style={[styles.bgWhite, { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }]}>
