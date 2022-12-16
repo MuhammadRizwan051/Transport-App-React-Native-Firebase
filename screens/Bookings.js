@@ -4,12 +4,13 @@ import database from '@react-native-firebase/database'
 
 const Bookings = () => {
   let [list, setList] = useState([])
-  let arr = []
+
   let getData = () => {
     database()
       .ref('bookings')
       .once('value', dt => {
-        arr.push(dt.val())
+        let li = Object.values(dt.val())
+        setList([...li])
         setList([...arr])
       })
   }
@@ -23,6 +24,7 @@ const Bookings = () => {
         <View key={i}>
           <Text>{e.userName}</Text>
           <Text>{e.vehicleDetails.noOfSeats}</Text>
+          <Text>{e.contact}</Text>
         </View>
       ))}
     </>

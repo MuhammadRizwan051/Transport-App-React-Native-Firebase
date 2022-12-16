@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, ToastAndroid } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, ToastAndroid, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import SMTextInput from '../component/SMTextInput'
 import styles from '../styling'
@@ -8,14 +8,21 @@ import database from '@react-native-firebase/database'
 const AddBooking = ({ navigation, route }) => {
   let vehicleObj = route.params
   let [model, setModel] = useState({})
+  let [isLoading, setIsLoading] = useState(false)
+
 
   let bookNow = () => {
+    setIsLoading(true)
+    model.id = database().ref('bookings/').push().key
     model.vehicleDetails = vehicleObj
-    database().ref('bookings/').set(model).then(res => {
-      console.log(res)
-      ToastAndroid.show('Booking Created Successfully', ToastAndroid.SHORT)
-    })
+    database().ref(`bookings/${model.id}`).set(model)
+      .then(res => {
+        setIsLoading(false)
+        ToastAndroid.show('Booking Created Successfully', ToastAndroid.SHORT)
+        console.log(res)
+      })
       .catch(err => {
+        setIsLoading(false)
         console.log(err)
       })
   }
@@ -30,22 +37,22 @@ const AddBooking = ({ navigation, route }) => {
         <ScrollView>
           <View style={{ borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15 }}>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='#06283D' placeholder='User Name' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, userName: e })} style={style.input} placeholderTextColor='grey' placeholder='User Name' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, contact: e })} keyboardType='Numeric' style={style.input} placeholderTextColor='#06283D' placeholder='Contact' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, contact: e })} keyboardType='Numeric' style={style.input} placeholderTextColor='grey' placeholder='Contact' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, cnic: e })} keyboardType='Numeric' style={style.input} placeholderTextColor='#06283D' placeholder='CNIC' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, cnic: e })} keyboardType='Numeric' style={style.input} placeholderTextColor='grey' placeholder='CNIC' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, address: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Address' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, address: e })} style={style.input} placeholderTextColor='grey' placeholder='Address' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, pickUpPoint: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Pick Up Point' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, pickUpPoint: e })} style={style.input} placeholderTextColor='grey' placeholder='Pick Up Point' />
             </View>
             <View>
-              <SMTextInput onChangeText={(e) => setModel({ ...model, dropPoint: e })} style={style.input} placeholderTextColor='#06283D' placeholder='Drop Point' />
+              <SMTextInput onChangeText={(e) => setModel({ ...model, dropPoint: e })} style={style.input} placeholderTextColor='grey' placeholder='Drop Point' />
             </View>
           </View>
         </ScrollView>
@@ -68,7 +75,7 @@ const AddBooking = ({ navigation, route }) => {
         <SMTouchableOpacity
           touchableStyle={[styles.bgDark, { paddingVertical: 10, borderRadius: 10 }]}
           textStyle={[styles.colorWhite, { textAlign: 'center', fontSize: 20, fontWeight: 'bold' }]}
-          value='Book Now'
+          value={isLoading ? <ActivityIndicator color='white' size={30} /> : 'Book Now'}
           onPress={bookNow} />
       </View>
     </View>
@@ -92,5 +99,6 @@ const style = StyleSheet.create({
     borderLeftColor: '#06283D',
     borderTopWidth: 1,
     borderTopColor: '#06283D',
+    color: 'black'
   }
 })

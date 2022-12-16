@@ -8,7 +8,7 @@ const Home = ({ navigation }) => {
     let getData = () => {
         database()
             .ref('vehicles')
-            .once('value', dt => {
+            .on('value', dt => {
                 // console.log(dt.val())
                 let li = Object.values(dt.val())
                 setList([...li])
