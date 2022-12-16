@@ -37,8 +37,8 @@ const Home = ({ navigation }) => {
                 <ScrollView>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {list.map((e, i) => (
-                            <TouchableOpacity onPress={() => navigation.navigate('Vehicle', e)} style={{ paddingHorizontal: 10, paddingVertical: 10, width: '50%' }}>
-                                <View key={i} style={[styles.bgWhite, { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }]}>
+                            <TouchableOpacity key={i} onPress={() => navigation.navigate('Vehicle', e)} style={{ paddingHorizontal: 10, paddingVertical: 10, width: '50%' }}>
+                                <View style={[styles.bgWhite, { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }]}>
                                     <Text style={{ textAlign: 'center' }}>{i + 1}</Text>
                                     <Text>Id:{e.id}</Text>
                                     <Text>Time: {e.time}</Text>

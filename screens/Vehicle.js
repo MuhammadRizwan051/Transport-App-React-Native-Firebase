@@ -18,7 +18,11 @@ const Vehicle = ({ navigation, route }) => {
         },
         {
             name: 'Kashif Zeeshan',
-            feedback: 'Osfh wemfk nfdj mmk sdmfkl Qwemfk nfdj mmk mewfkl nusdifh'
+            feedback: 'Osfh wemfk nfdj mmk sdmfkl Qwemfk nfdj mmk mewfkl nusdifh.'
+        },
+        {
+            name: 'Wasif Bilal',
+            feedback: 'Uiojwgnj Qwemfk nfdj mmk sdmfklr f few wq smndfk Qwemfk nfdj.'
         },
     ])
 
@@ -27,13 +31,13 @@ const Vehicle = ({ navigation, route }) => {
         <>
             <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, }]}>
                 <View>
-                    <Text style={{ fontSize: 32, color: 'black' }}>{obj.vehicleName}</Text>
-                    <Text>Seats: {obj.noOfSeats}</Text>
-                    <Text>Starting Destination: {obj.startDest}</Text>
-                    <Text>End Destination: {obj.endDest}</Text>
+                    <Text style={{ fontSize: 32, color: 'black', fontWeight: 'bold' }}>{obj.vehicleName}</Text>
+                    <Text style={{color:'black', borderBottomWidth:1, marginTop:15, fontSize:16}}>Seats: {obj.noOfSeats}</Text>
+                    <Text style={{color:'black', borderBottomWidth:1, marginTop:15, fontSize:16}}>Starting Destination: {obj.startDest}</Text>
+                    <Text style={{color:'black', borderBottomWidth:1, marginTop:15, fontSize:16}}>End Destination: {obj.endDest}</Text>
                 </View>
 
-                <View style={[styles.bgWhite, { position: 'absolute', bottom: 100, left: 0, right: 0, borderRadius: 15, paddingHorizontal: 20, paddingVertical: 15, marginVertical: 30 }]}>
+                <View style={[styles.bgWhite, { height: '40%', position: 'absolute', bottom: 250, left: 0, right: 0, borderRadius: 15, paddingHorizontal: 15, paddingVertical: 15, marginVertical: 30 }]}>
                     <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Review</Text>
                     <ScrollView>
                         {reviewList.map((e, i) => (
@@ -47,7 +51,7 @@ const Vehicle = ({ navigation, route }) => {
 
                 <View style={{ position: 'absolute', bottom: 30, left: 20, right: 20 }}>
                     <SMTouchableOpacity onPress={() => navigation.navigate('Add Booking', obj)} value='Book Now'
-                        textStyle={[styles.colorLight, { textAlign: 'center', fontSize: 18, fontWeight: 'bold', fontStyle: 'italic' }]}
+                        textStyle={[styles.colorWhite, { textAlign: 'center', fontSize: 18, fontWeight: 'bold', fontStyle: 'italic' }]}
                         touchableStyle={[styles.bgDark, { borderRadius: 20, paddingVertical: 10 }]} />
                 </View>
             </View>

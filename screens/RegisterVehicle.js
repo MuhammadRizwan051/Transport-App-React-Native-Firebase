@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ToastAndroid, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import SMTextInput from '../component/SMTextInput'
 import SMTouchableOpacity from '../component/SMTouchableOpacity'
@@ -6,18 +6,25 @@ import database from '@react-native-firebase/database'
 
 const RegisterVehicle = () => {
     let [model, setModel] = useState()
+    let [isLoading, setIsLoading] = useState(false)
     let register = () => {
+        setIsLoading(true)
         console.log(model)
         model.id = database().ref('vehicles/').push().key
         database()
             .ref(`vehicles/${model.id}`).set(model)
             .then(res => {
+                setIsLoading(false)
+                ToastAndroid.show('Vehicle Registered Successfully', ToastAndroid.SHORT)
                 console.log(res)
+                setModel()
             })
             .catch(err => {
+                setIsLoading(false)
                 console.log(err)
+                setModel()
             })
-            setModel({})
+        setModel({})
     }
     return (
         <View style={{ height: '100%', backgroundColor: '#B4CDE6', paddingTop: '10%' }}>
@@ -42,7 +49,7 @@ const RegisterVehicle = () => {
                     <SMTextInput onChangeText={e => setModel({ ...model, endDest: e })} placeholderTextColor='#06283D' placeholder='End Destination' style={styles.input} />
                 </View>
                 <View>
-                    <SMTouchableOpacity onPress={register} value='Register' textStyle={styles.btnText} touchableStyle={styles.btn} />
+                    <SMTouchableOpacity onPress={register} value={isLoading ? <ActivityIndicator color='white' size={25} /> : 'Register'} textStyle={styles.btnText} touchableStyle={styles.btn} />
                 </View>
             </View>
         </View>
