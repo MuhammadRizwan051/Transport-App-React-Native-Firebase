@@ -11,7 +11,6 @@ const Bookings = () => {
       .once('value', dt => {
         let li = Object.values(dt.val())
         setList([...li])
-        setList([...arr])
       })
   }
   console.log('list', list)

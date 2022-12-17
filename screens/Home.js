@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
     return (
         <>
             <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, paddingVertical: 20 }]}>
-                <View style={{ alignItems: 'center' }}>
+                {/* <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity style={{ marginBottom: 10, backgroundColor: 'black', width: '100%', paddingVertical: 10 }} onPress={() => navigation.navigate('Register Vehicle')}>
                         <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>Register Vehicle</Text>
                     </TouchableOpacity>
@@ -32,7 +32,7 @@ const Home = ({ navigation }) => {
                     <TouchableOpacity style={{ marginBottom: 10, backgroundColor: 'black', width: '100%', paddingVertical: 10 }} onPress={() => navigation.navigate('Add Booking')} >
                         <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>Add Booking</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 <ScrollView>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>

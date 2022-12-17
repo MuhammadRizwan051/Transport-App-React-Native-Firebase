@@ -5,7 +5,15 @@ import SMTouchableOpacity from '../component/SMTouchableOpacity'
 import database from '@react-native-firebase/database'
 
 const RegisterVehicle = () => {
-    let [model, setModel] = useState()
+    const initialData = {
+        vehicleName: '',
+        vehicleType: '',
+        noOfSeats: '',
+        time: '',
+        startDest: '',
+        endDest: '',
+    }
+    let [model, setModel] = useState(initialData)
     let [isLoading, setIsLoading] = useState(false)
     let register = () => {
         setIsLoading(true)
@@ -17,36 +25,34 @@ const RegisterVehicle = () => {
                 setIsLoading(false)
                 ToastAndroid.show('Vehicle Registered Successfully', ToastAndroid.SHORT)
                 console.log(res)
-                setModel()
+                setModel(initialData)
             })
             .catch(err => {
                 setIsLoading(false)
                 console.log(err)
-                setModel()
             })
-        setModel({})
     }
     return (
         <View style={{ height: '100%', backgroundColor: '#B4CDE6', paddingTop: '10%' }}>
             <Text style={{ fontSize: 32, textAlign: 'center', paddingVertical: 30, color: '#06283D', fontWeight: 'bold' }}>Register Vehicle</Text>
             <View style={{ paddingHorizontal: 30 }}>
                 <View>
-                    <SMTextInput onChangeText={e => setModel({ ...model, vehicleName: e })} placeholderTextColor='#06283D' placeholder='Vehicle Name' style={styles.input} />
+                    <SMTextInput value={model.vehicleName} onChangeText={e => setModel({ ...model, vehicleName: e })} placeholderTextColor='#06283D' placeholder='Vehicle Name' style={styles.input} />
                 </View>
                 <View>
-                    <SMTextInput onChangeText={e => setModel({ ...model, vehicleType: e })} placeholderTextColor='#06283D' placeholder='Type of Vehicle' style={styles.input} />
+                    <SMTextInput value={model.vehicleType} onChangeText={e => setModel({ ...model, vehicleType: e })} placeholderTextColor='#06283D' placeholder='Type of Vehicle' style={styles.input} />
                 </View>
                 <View>
-                    <SMTextInput onChangeText={e => setModel({ ...model, noOfSeats: e })} placeholderTextColor='#06283D' placeholder='No of Seats' style={styles.input} />
+                    <SMTextInput value={model.noOfSeats} onChangeText={e => setModel({ ...model, noOfSeats: e })} placeholderTextColor='#06283D' placeholder='No of Seats' style={styles.input} />
                 </View>
                 <View>
-                    <SMTextInput onChangeText={e => setModel({ ...model, time: e })} placeholderTextColor='#06283D' placeholder='Time' style={styles.input} />
+                    <SMTextInput value={model.time} onChangeText={e => setModel({ ...model, time: e })} placeholderTextColor='#06283D' placeholder='Time' style={styles.input} />
                 </View>
                 <View>
-                    <SMTextInput onChangeText={e => setModel({ ...model, startDest: e })} placeholderTextColor='#06283D' placeholder='Starting Destination' style={styles.input} />
+                    <SMTextInput value={model.startDest} onChangeText={e => setModel({ ...model, startDest: e })} placeholderTextColor='#06283D' placeholder='Starting Destination' style={styles.input} />
                 </View>
                 <View>
-                    <SMTextInput onChangeText={e => setModel({ ...model, endDest: e })} placeholderTextColor='#06283D' placeholder='End Destination' style={styles.input} />
+                    <SMTextInput value={model.endDest} onChangeText={e => setModel({ ...model, endDest: e })} placeholderTextColor='#06283D' placeholder='End Destination' style={styles.input} />
                 </View>
                 <View>
                     <SMTouchableOpacity onPress={register} value={isLoading ? <ActivityIndicator color='white' size={25} /> : 'Register'} textStyle={styles.btnText} touchableStyle={styles.btn} />
