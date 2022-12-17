@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Touchable, TouchableOpacity, ListViewBase, ScrollView, ImageBackground, Image } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native'
 import database from '@react-native-firebase/database'
 import styles from '../styling'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
-// import Icon from 'react-native-vector-icons/AntDesign';
-
-
 
 
 const Home = ({ navigation }) => {
@@ -74,10 +71,5 @@ const Home = ({ navigation }) => {
         </>
     )
 }
-{/* <Text>Vehicle Type:{e.vehicleType}</Text> */ }
-{/* <Text style={{ textAlign: 'center' }}>{i + 1}</Text> */ }
-{/* <Text>Id:{e.id}</Text> */ }
-{/* <Text>Start Dest:{e.startDest}</Text>
-<Text>End Dest:{e.endDest}</Text> */}
 
 export default Home

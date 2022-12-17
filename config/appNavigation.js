@@ -40,15 +40,8 @@ const TabNavigator = () => (
                 </View>
             )
         }} />
-        {/* <Tab.Screen name="Add Booking" component={AddBooking} options={{
-            tabBarIcon: ({ focused }) => (
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Image style={{ width: 22, height: 22, tintColor: focused ? 'royalblue' : 'black' }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/25/25694.png' }} />
-                    <Text style={{ marginTop: 1, fontSize: 12, color: focused ? 'royalblue' : 'black' }}>Add Booking</Text>
-                </View>
-            )
-        }} /> */}
         <Tab.Screen name="Bookings" component={Bookings} options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <Image style={{ width: 22, height: 22, tintColor: focused ? 'royalblue' : 'black' }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/25/25694.png' }} />
@@ -56,14 +49,6 @@ const TabNavigator = () => (
                 </View>
             )
         }} />
-        {/* <Tab.Screen name="Vehicle" component={Vehicle} options={{
-            tabBarIcon: ({ focused }) => (
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Image style={{ width: 22, height: 22, tintColor: focused ? 'royalblue' : 'black' }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/25/25694.png' }} />
-                    <Text style={{ marginTop: 1, fontSize: 12, color: focused ? 'royalblue' : 'black' }}>Vehicle</Text>
-                </View>
-            )
-        }} /> */}
     </Tab.Navigator>
 )
 

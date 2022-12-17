@@ -1,7 +1,6 @@
 import { View, Text, ScrollView, Image } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../styling'
-import { buildArgv } from 'jest-cli/build/cli'
 import SMTouchableOpacity from '../component/SMTouchableOpacity'
 
 const Vehicle = ({ navigation, route }) => {
