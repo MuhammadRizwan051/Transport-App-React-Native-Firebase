@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Touchable, TouchableOpacity, ListViewBase, ScrollView } from 'react-native'
+import { View, Text, Touchable, TouchableOpacity, ListViewBase, ScrollView, ImageBackground, Image } from 'react-native'
 import database from '@react-native-firebase/database'
 import styles from '../styling'
 
@@ -21,19 +21,13 @@ const Home = ({ navigation }) => {
 
     return (
         <>
+            <View style={[styles.bgDark, { paddingVertical: 10, paddingHorizontal: 10 }]}>
+                <Text style={[styles.colorWhite, { textAlign: 'center', fontSize: 26, fontWeight: 'bold' }]}>Transport</Text>
+            </View>
             <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, paddingVertical: 20 }]}>
-                {/* <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={{ marginBottom: 10, backgroundColor: 'black', width: '100%', paddingVertical: 10 }} onPress={() => navigation.navigate('Register Vehicle')}>
-                        <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>Register Vehicle</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ marginBottom: 10, backgroundColor: 'black', width: '100%', paddingVertical: 10 }} onPress={() => navigation.navigate('Bookings')} >
-                        <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>Bookings</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ marginBottom: 10, backgroundColor: 'black', width: '100%', paddingVertical: 10 }} onPress={() => navigation.navigate('Add Booking')} >
-                        <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>Add Booking</Text>
-                    </TouchableOpacity>
-                </View> */}
-
+                <View>
+                    <Image resizeMode='cover' style={{ height: 200, width: '100%', borderRadius: 10 }} source={{ uri: 'https://media.istockphoto.com/id/1399747292/photo/logistics-transportation-import-export-and-container-cargo-freight-ship-freight-train-cargo.jpg?b=1&s=170667a&w=0&k=20&c=j18xZM7GzIU_pzvhoYFkO2UWUrWBK1z5x1kLk4ndEZw=' }} />
+                </View>
                 <ScrollView>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {list.map((e, i) => (

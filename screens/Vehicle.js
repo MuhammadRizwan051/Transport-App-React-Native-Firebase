@@ -29,12 +29,12 @@ const Vehicle = ({ navigation, route }) => {
     console.log(obj)
     return (
         <>
-            <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, }]}>
+            <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20 }]}>
                 <View>
                     <Text style={{ fontSize: 32, color: 'black', fontWeight: 'bold' }}>{obj.vehicleName}</Text>
-                    <Text style={{color:'black', borderBottomWidth:1, marginTop:15, fontSize:16}}>Seats: {obj.noOfSeats}</Text>
-                    <Text style={{color:'black', borderBottomWidth:1, marginTop:15, fontSize:16}}>Starting Destination: {obj.startDest}</Text>
-                    <Text style={{color:'black', borderBottomWidth:1, marginTop:15, fontSize:16}}>End Destination: {obj.endDest}</Text>
+                    <Text style={{ color: 'black', borderBottomWidth: 1, marginTop: 15, fontSize: 16 }}>Seats: {obj.noOfSeats}</Text>
+                    <Text style={{ color: 'black', borderBottomWidth: 1, marginTop: 15, fontSize: 16 }}>Starting Destination: {obj.startDest}</Text>
+                    <Text style={{ color: 'black', borderBottomWidth: 1, marginTop: 15, fontSize: 16 }}>End Destination: {obj.endDest}</Text>
                 </View>
 
                 <View style={[styles.bgWhite, { height: '40%', position: 'absolute', bottom: 250, left: 0, right: 0, borderRadius: 15, paddingHorizontal: 15, paddingVertical: 15, marginVertical: 30 }]}>
