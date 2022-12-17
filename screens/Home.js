@@ -33,9 +33,9 @@ const Home = ({ navigation }) => {
                 <View>
                     <Image resizeMode='cover' style={{ height: 200, width: '100%', borderRadius: 10 }} source={{ uri: 'https://media.istockphoto.com/id/1399747292/photo/logistics-transportation-import-export-and-container-cargo-freight-ship-freight-train-cargo.jpg?b=1&s=170667a&w=0&k=20&c=j18xZM7GzIU_pzvhoYFkO2UWUrWBK1z5x1kLk4ndEZw=' }} />
                 </View>
-                <View style={{ height: '40%', marginVertical: 20 }}>
+                <View style={{ height: '60%', marginVertical: 30 }}>
                     <ScrollView>
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', borderWidth: 1 }}>
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                             {list.map((e, i) => (
                                 <TouchableOpacity key={i} onPress={() => navigation.navigate('Vehicle', e)} style={{ width: '100%', marginBottom: 15 }}>
                                     <View style={[styles.bgWhite, { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }]}>
@@ -50,8 +50,7 @@ const Home = ({ navigation }) => {
                                                         e.vehicleName == 'Hiace' ?
                                                             <Image resizeMode='contain' source={{ uri: 'https://tourmover.com/wp-content/uploads/2019/03/toyota-hiace.jpg' }} style={{ height: 50, width: '100%' }} />
                                                             :
-                                                            <Image source={{ uri: 'https://www.zehnservices.com/wp-content/uploads/2020/02/driver-kolkata.jpg' }} style={{ height: 50, width: 50 }} />
-
+                                                            ""
                                                 }
                                             </View>
                                             <View style={{ width: '85%', paddingStart: 15 }}>

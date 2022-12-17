@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Image } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../styling'
 import { buildArgv } from 'jest-cli/build/cli'
@@ -30,16 +30,18 @@ const Vehicle = ({ navigation, route }) => {
     return (
         <>
             <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20 }]}>
-                <View>
-                    <Text style={{ fontSize: 32, color: 'black', fontWeight: 'bold' }}>{obj.vehicleName}</Text>
-                    <Text style={{ color: 'black', borderBottomWidth: 1, marginTop: 15, fontSize: 16 }}>Seats: {obj.noOfSeats}</Text>
-                    <Text style={{ color: 'black', borderBottomWidth: 1, marginTop: 15, fontSize: 16 }}>Starting Destination: {obj.startDest}</Text>
-                    <Text style={{ color: 'black', borderBottomWidth: 1, marginTop: 15, fontSize: 16 }}>End Destination: {obj.endDest}</Text>
+                <View style={{ marginTop: 10 }}>
+                    <Text style={[styles.colorDark, { textAlign: 'center', fontSize: 32, fontWeight: 'bold' }]}>{obj.vehicleName}</Text>
+                    <View style={{ marginTop: 10 }}>
+                        <Text style={[styles.bgDark, styles.colorWhite, { borderRadius: 15, marginBottom: 10, fontSize: 14, paddingVertical: 10, paddingHorizontal: 10 }]}>ID: {obj.id}</Text>
+                        <Text style={[styles.bgDark, styles.colorWhite, { borderRadius: 15, marginBottom: 10, fontSize: 14, paddingVertical: 10, paddingHorizontal: 10 }]}>Time: {obj.time}</Text>
+                        <Text style={[styles.bgDark, styles.colorWhite, { borderRadius: 15, marginBottom: 10, fontSize: 14, paddingVertical: 10, paddingHorizontal: 10 }]}>{obj.noOfSeats} Seater</Text>
+                    </View>
                 </View>
 
-                <View style={[styles.bgWhite, { height: '40%', position: 'absolute', bottom: 250, left: 0, right: 0, borderRadius: 15, paddingHorizontal: 15, paddingVertical: 15, marginVertical: 30 }]}>
-                    <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Review</Text>
+                <View style={[styles.bgWhite, { position: 'absolute', bottom: 100, left: 20, right: 20, height: '40%', borderRadius: 15, paddingHorizontal: 15, paddingVertical: 15, marginVertical: 30 }]}>
                     <ScrollView>
+                        <Text style={[{ color: '#023047', marginBottom: 10, fontSize: 22, fontWeight: 'bold', textAlign: 'center' }]}>Review</Text>
                         {reviewList.map((e, i) => (
                             <View key={i} style={[styles.bgLight, { paddingVertical: 10, paddingHorizontal: 10, borderRadius: 10, marginBottom: 10 }]}>
                                 <Text style={[{ fontStyle: 'italic', fontSize: 22, color: '#023047', fontWeight: 'bold' }]}>{e.name}</Text>
