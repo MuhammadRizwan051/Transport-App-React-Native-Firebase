@@ -20,6 +20,7 @@ const AddBooking = ({ navigation, route }) => {
         setIsLoading(false)
         ToastAndroid.show('Booking Created Successfully', ToastAndroid.SHORT)
         console.log(res)
+        navigation.navigate('Home')
       })
       .catch(err => {
         setIsLoading(false)

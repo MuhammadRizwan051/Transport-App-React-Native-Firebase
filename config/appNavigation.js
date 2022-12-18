@@ -9,12 +9,16 @@ import Bookings from '../screens/Bookings';
 import Vehicle from '../screens/Vehicle';
 import Splash from '../screens/Splash';
 import { Image, Text, View } from 'react-native';
+import Login from '../screens/Login';
+import SignUp from '../screens/SignUp';
 
 
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="Vehicle" component={Vehicle} />
         <Stack.Screen name="Add Booking" component={AddBooking} />
@@ -33,6 +37,7 @@ const TabNavigator = () => (
             )
         }} />
         <Tab.Screen name="Register Vehicle" component={RegisterVehicle} options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <Image style={{ width: 22, height: 22, tintColor: focused ? 'royalblue' : 'black' }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/25/25694.png' }} />

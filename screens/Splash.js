@@ -5,7 +5,7 @@ import styles from '../styling'
 const Splash = ({navigation}) => {
     let move = () => {
         setTimeout(() => {
-            navigation.navigate('Home')
+            navigation.navigate('Login')
         },3000)
     }
     useEffect(() => {
