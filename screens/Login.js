@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ActivityIndicator, StyleSheet, ToastAndroid } from 'react-native';
 import SMTextInput from '../component/SMTextInput';
 import auth from '@react-native-firebase/auth';
 import styles from '../styling';
@@ -7,7 +7,11 @@ import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 
 
 function Login({ navigation }) {
-    const [model, setModel] = useState({});
+    const initialData = {
+        email: '',
+        password: ''
+    }
+    const [model, setModel] = useState(initialData);
     const [isLoading, setIsLoading] = useState(false)
 
     let loginuser = () => {
@@ -16,10 +20,15 @@ function Login({ navigation }) {
             .then(res => {
                 setIsLoading(false)
                 // console.log(res)
-                navigation.navigate('Todo', res.user.uid)
+                ToastAndroid.show('User Login Successfully', ToastAndroid.SHORT)
+                setModel(initialData)
+                setTimeout(() => {
+                    navigation.navigate('Home', res.user.uid)
+                }, 500);
             })
             .catch(err => {
                 setIsLoading(false)
+                ToastAndroid.show(err, ToastAndroid.SHORT)
                 console.log(err)
             })
     }
@@ -30,12 +39,12 @@ function Login({ navigation }) {
                 <Text style={[styles.colorDark, { fontSize: 26, fontWeight: 'bold', fontSize: 26 }]}>LOGIN</Text>
                 <Icon name='person' size={80} color='#06283D' />
                 <View style={{ width: '100%', paddingTop: 25, paddingHorizontal: 20 }}>
-                    <Text style={[styles.colorDark, { fontWeight:'bold', fontSize:15, marginStart: 10, marginBottom: 2 }]}>Email</Text>
-                    <SMTextInput label="Email" style={style.input} placeholder='rizwan@gmail.com' placeholderTextColor='grey' onChangeText={e => setModel({ ...model, email: e })} />
+                    <Text style={[styles.colorDark, { fontWeight: 'bold', fontSize: 15, marginStart: 10, marginBottom: 2 }]}>Email</Text>
+                    <SMTextInput value={model.email} label="Email" style={style.input} placeholder='rizwan@gmail.com' placeholderTextColor='grey' onChangeText={e => setModel({ ...model, email: e })} />
                 </View>
                 <View style={{ width: '100%', paddingTop: 25, paddingHorizontal: 20 }}>
-                    <Text style={[styles.colorDark, { fontWeight:'bold', fontSize:15, marginStart: 10, marginBottom: 2 }]}>Password</Text>
-                    <SMTextInput secureTextEntry={true} label="Password" style={style.input} placeholder='123456' placeholderTextColor='grey' onChangeText={e => setModel({ ...model, password: e })} />
+                    <Text style={[styles.colorDark, { fontWeight: 'bold', fontSize: 15, marginStart: 10, marginBottom: 2 }]}>Password</Text>
+                    <SMTextInput value={model.password} secureTextEntry={true} label="Password" style={style.input} placeholder='123456' placeholderTextColor='grey' onChangeText={e => setModel({ ...model, password: e })} />
                 </View>
 
                 <View style={{ padding: 20, width: '100%', paddingTop: 50 }}>

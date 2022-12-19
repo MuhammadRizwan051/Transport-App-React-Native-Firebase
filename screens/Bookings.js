@@ -27,11 +27,11 @@ const Bookings = ({ navigation }) => {
       <View style={[styles.bgDark, { paddingVertical: 10, paddingHorizontal: 10 }]}>
         <Text style={[styles.colorWhite, { textAlign: 'center', fontSize: 26, fontWeight: 'bold' }]}>Bookings</Text>
       </View>
-      {dataLoader ? <View style={{ height: '100%', justifyContent: 'center' }}>
-        <ActivityIndicator size={60} color='red' />
-      </View>
-        :
-        <View style={[styles.bgLight, { height: '100%', paddingVertical: 20, paddingHorizontal: 15 }]}>
+      <View style={[styles.bgLight, { height: '100%', paddingVertical: 20, paddingHorizontal: 15 }]}>
+        {dataLoader ? <View style={{ height: '100%', justifyContent: 'center' }}>
+          <ActivityIndicator size={60} color='red' />
+        </View>
+          :
           <ScrollView>
             {list.map((e, i) => (
               <View key={i} style={[styles.bgWhite, { marginBottom: 15, width: '100%', paddingHorizontal: 20, paddingVertical: 5, borderRadius: 10 }]}>
@@ -54,8 +54,8 @@ const Bookings = ({ navigation }) => {
               </View>
             ))}
           </ScrollView>
-        </View>
-      }
+        }
+      </View>
     </>
   )
 }

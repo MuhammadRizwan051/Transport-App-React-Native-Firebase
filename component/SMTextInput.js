@@ -2,7 +2,7 @@ import React from 'react'
 import { TextInput } from 'react-native'
 
 function SMTextInput(props) {
-    const { value, keyboardType, placeholder, placeholderTextColor, onChangeText, editable, style } = props
+    const { value, keyboardType, placeholder, placeholderTextColor, onChangeText, editable, secureTextEntry, style } = props
     return (
         <>
             <TextInput
@@ -12,6 +12,7 @@ function SMTextInput(props) {
                 placeholderTextColor={placeholderTextColor}
                 onChangeText={onChangeText}
                 editable={editable}
+                secureTextEntry={secureTextEntry}
                 style={style} />
         </>
     )

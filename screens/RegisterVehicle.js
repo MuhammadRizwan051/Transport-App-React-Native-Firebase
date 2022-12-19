@@ -4,6 +4,8 @@ import SMTextInput from '../component/SMTextInput'
 import SMTouchableOpacity from '../component/SMTouchableOpacity'
 import database from '@react-native-firebase/database'
 import styles from '../styling'
+import { SelectList } from 'react-native-dropdown-select-list'
+
 
 const RegisterVehicle = () => {
     const initialData = {
@@ -33,12 +35,26 @@ const RegisterVehicle = () => {
                 console.log(err)
             })
     }
+
+    const [selected, setSelected] = React.useState("");
+
+    const data = [
+        { key: '1', value: 'Mobiles' },
+        { key: '2', value: 'Appliances' },
+        { key: '3', value: 'Cameras' },
+        { key: '4', value: 'Computers' },
+        { key: '5', value: 'Vegetables' },
+        { key: '6', value: 'Diary Products' },
+        { key: '7', value: 'Drinks' },
+    ]
+
+
     return (
         <>
             <View style={[styles.bgDark, { paddingVertical: 10, paddingHorizontal: 10 }]}>
                 <Text style={[styles.colorWhite, { textAlign: 'center', fontSize: 26, fontWeight: 'bold' }]}>Register Vehicle</Text>
             </View>
-            <View style={{ height: '100%', backgroundColor: '#B4CDE6', justifyContent:'center' }}>
+            <View style={{ height: '100%', backgroundColor: '#B4CDE6', justifyContent: 'center' }}>
                 {/* <Text style={{ fontSize: 32, textAlign: 'center', paddingVertical: 30, color: '#06283D', fontWeight: 'bold' }}>Register Vehicle</Text> */}
                 <View style={{ paddingHorizontal: 30 }}>
                     <View>
@@ -49,6 +65,30 @@ const RegisterVehicle = () => {
                     </View>
                     <View>
                         <SMTextInput value={model.noOfSeats} onChangeText={e => setModel({ ...model, noOfSeats: e })} placeholderTextColor='#06283D' placeholder='No of Seats' style={style.input} />
+                    </View>
+                    <View>
+                        <SelectList
+                            setSelected={(val) => setSelected(val)}
+                            data={data}
+                            save="value"
+                            // search={false}
+                            // dropdownShown={false}
+                            placeholder='Type of Vehicle'
+                            placeholderTextColor='red'
+                            boxStyles={{
+                                borderBottomWidth: 5,
+                                borderBottomColor: '#06283D',
+                                borderRightWidth: 1,
+                                borderRightColor: '#06283D',
+                                borderLeftWidth: 1,
+                                borderLeftColor: '#06283D',
+                                borderTopWidth: 1,
+                                borderTopColor: '#06283D',
+                                marginBottom: 15,
+                                backgroundColor: 'white',
+                                borderRadius: 25
+                            }}
+                        />
                     </View>
                     <View>
                         <SMTextInput value={model.time} onChangeText={e => setModel({ ...model, time: e })} placeholderTextColor='#06283D' placeholder='Time' style={style.input} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ActivityIndicator, StyleSheet, ImageBackground, ToastAndroid } from 'react-native';
 import styles from '../styling';
 import SMTextInput from '../component/SMTextInput';
 import auth from '@react-native-firebase/auth';
@@ -48,10 +48,14 @@ function SignUp({ navigation }) {
                     .set(model)
                     .then(() => {
                         setIsLoading(false)
-                        navigation.navigate('Login')
+                        ToastAndroid.show('User Registered Successfully', ToastAndroid.SHORT)
+                        setTimeout(() => {
+                            navigation.navigate('Login')
+                        }, 500);
                     })
                     .catch(dberr => {
                         setIsLoading(false)
+                        ToastAndroid.show(dberr, ToastAndroid.SHORT)
                         console.log(dberr)
                         setErr(dberr)
                     })
@@ -65,7 +69,8 @@ function SignUp({ navigation }) {
 
     return (
         <>
-            <View style={[styles.bgLight, { height: '100%', alignItems: 'center', paddingTop: '30%' }]}>
+            {/* <ImageBackground style={{ height: '100%', width: '100%' }} source={{ uri: 'https://img.freepik.com/premium-photo/skyline-asphalt-pavement-blue-sky-white-cloud_1417-12062.jpg?w=2000' }}> */}
+            <View style={[styles.bgLight, { height: '100%', width: '100%', alignItems: 'center', paddingTop: '30%' }]}>
                 <Text style={{ fontSize: 26, color: 'black', fontWeight: 'bold', fontSize: 26 }}>SIGNUP</Text>
                 <Icon name='person' size={80} color='#06283D' />
                 <View style={{ width: '100%', paddingTop: 25, paddingHorizontal: 20 }}>
@@ -94,6 +99,7 @@ function SignUp({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </View>
+            {/* </ImageBackground> */}
         </>
     );
 }
