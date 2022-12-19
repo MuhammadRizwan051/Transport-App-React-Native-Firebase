@@ -6,6 +6,9 @@ import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 
 
 const Home = ({ navigation }) => {
+    // let obj = route.params
+    // console.log(route.params)
+
     let [dataLoader, setDataLoader] = useState(false)
     let [list, setList] = useState([])
     let getData = () => {
@@ -19,10 +22,22 @@ const Home = ({ navigation }) => {
                 setList([...li])
             })
     }
+    const getData1 = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('LoginUser')
+            return jsonValue != null ? JSON.parse(jsonValue) : null;
+            // console.log('Global', JSON.parse(jsonValue))
+        } catch (e) {
+            // error reading value
+        }
+    }
+
     // console.log('list', list)
     useEffect(() => {
         getData()
+        getData1()
     }, [])
+
 
     return (
         <>

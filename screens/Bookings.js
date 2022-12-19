@@ -18,7 +18,7 @@ const Bookings = ({ navigation }) => {
         setList([...li])
       })
   }
-  console.log('list', list)
+  // console.log('list', list)
   useEffect(() => {
     getData()
   }, [])

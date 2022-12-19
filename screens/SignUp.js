@@ -51,7 +51,7 @@ function SignUp({ navigation }) {
                         ToastAndroid.show('User Registered Successfully', ToastAndroid.SHORT)
                         setTimeout(() => {
                             navigation.navigate('Login')
-                        }, 500);
+                        }, 200);
                     })
                     .catch(dberr => {
                         setIsLoading(false)

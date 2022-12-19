@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, ToastAndroid, ActivityIndicator } from 'react-native'
+import { View, Text, StyleSheet, ToastAndroid, ActivityIndicator, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import SMTextInput from '../component/SMTextInput'
 import SMTouchableOpacity from '../component/SMTouchableOpacity'
 import database from '@react-native-firebase/database'
 import styles from '../styling'
 import { SelectList } from 'react-native-dropdown-select-list'
+import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 
 
 const RegisterVehicle = () => {
@@ -54,9 +55,8 @@ const RegisterVehicle = () => {
             <View style={[styles.bgDark, { paddingVertical: 10, paddingHorizontal: 10 }]}>
                 <Text style={[styles.colorWhite, { textAlign: 'center', fontSize: 26, fontWeight: 'bold' }]}>Register Vehicle</Text>
             </View>
-            <View style={{ height: '100%', backgroundColor: '#B4CDE6', justifyContent: 'center' }}>
-                {/* <Text style={{ fontSize: 32, textAlign: 'center', paddingVertical: 30, color: '#06283D', fontWeight: 'bold' }}>Register Vehicle</Text> */}
-                <View style={{ paddingHorizontal: 30 }}>
+            <View style={{ backgroundColor: '#B4CDE6', height: '100%', borderWidth: 1, paddingVertical: 70, justifyContent: 'center', paddingHorizontal: 30 }}>
+                <ScrollView>
                     <View>
                         <SMTextInput value={model.vehicleName} onChangeText={e => setModel({ ...model, vehicleName: e })} placeholderTextColor='#06283D' placeholder='Vehicle Name' style={style.input} />
                     </View>
@@ -71,10 +71,16 @@ const RegisterVehicle = () => {
                             setSelected={(val) => setSelected(val)}
                             data={data}
                             save="value"
+                            arrowicon={<Icon name="expand-more" size={18} color={'black'} />} 
                             // search={false}
                             // dropdownShown={false}
+                            searchPlaceholder='Search...'
                             placeholder='Type of Vehicle'
                             placeholderTextColor='red'
+                            dropdownStyles={[styles.bgLight, { borderWidth: 3, borderColor: '#06283D', marginBottom: 20, marginTop: 0 }]}
+                            dropdownTextStyles={[styles.colorWhite]}
+                            dropdownItemStyles={[styles.bgDark, { marginBottom: 5 }]}
+                            inputStyles={{ color: '#06283D' }}
                             boxStyles={{
                                 borderBottomWidth: 5,
                                 borderBottomColor: '#06283D',
@@ -86,7 +92,8 @@ const RegisterVehicle = () => {
                                 borderTopColor: '#06283D',
                                 marginBottom: 15,
                                 backgroundColor: 'white',
-                                borderRadius: 25
+                                borderRadius: 25,
+                                // marginBottom: 0
                             }}
                         />
                     </View>
@@ -102,7 +109,7 @@ const RegisterVehicle = () => {
                     <View>
                         <SMTouchableOpacity onPress={register} value={isLoading ? <ActivityIndicator color='white' size={25} /> : 'Register'} textStyle={style.btnText} touchableStyle={style.btn} />
                     </View>
-                </View>
+                </ScrollView>
             </View>
         </>
     )

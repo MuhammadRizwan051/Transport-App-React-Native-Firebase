@@ -4,6 +4,8 @@ import SMTextInput from '../component/SMTextInput';
 import auth from '@react-native-firebase/auth';
 import styles from '../styling';
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 function Login({ navigation }) {
@@ -19,12 +21,23 @@ function Login({ navigation }) {
         auth().signInWithEmailAndPassword(model.email, model.password)
             .then(res => {
                 setIsLoading(false)
-                // console.log(res)
+                // console.log(res.user)
                 ToastAndroid.show('User Login Successfully', ToastAndroid.SHORT)
                 setModel(initialData)
                 setTimeout(() => {
-                    navigation.navigate('Home', res.user.uid)
-                }, 500);
+                    navigation.navigate('Home')
+                }, 200);
+
+                const storeData = async () => {
+                    try {
+                        const jsonValue = JSON.stringify(res.user)
+                        await AsyncStorage.setItem('LoginUser', jsonValue)
+                    } catch (e) {
+                        // saving error
+                    }
+                }
+
+                storeData()
             })
             .catch(err => {
                 setIsLoading(false)
