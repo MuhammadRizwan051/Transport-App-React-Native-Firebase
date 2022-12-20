@@ -22,21 +22,25 @@ const Home = ({ navigation }) => {
                 setList([...li])
             })
     }
+
+    // useEffect(() => {
+    //     getData()
+    // }, [])
+
     const getData1 = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('LoginUser')
-            return jsonValue != null ? JSON.parse(jsonValue) : null;
-            // console.log('Global', JSON.parse(jsonValue))
+            const abc = JSON.parse(jsonValue)
+            console.log('Home Login Data', abc)
+            // return jsonValue != null ? console.log('Home Console', JSON.parse(jsonValue)) : null;
         } catch (e) {
             // error reading value
         }
     }
 
+    getData1()
+
     // console.log('list', list)
-    useEffect(() => {
-        getData()
-        getData1()
-    }, [])
 
 
     return (
@@ -53,7 +57,7 @@ const Home = ({ navigation }) => {
                         :
                         <ScrollView>
                             <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                                {list.map((e, i) => (
+                                {list && list.map((e, i) => (
                                     <TouchableOpacity key={i} onPress={() => navigation.navigate('Vehicle', e)} style={{ width: '100%', marginBottom: 15 }}>
                                         <View style={[styles.bgWhite, { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }]}>
                                             <View style={{ flexDirection: 'row' }}>

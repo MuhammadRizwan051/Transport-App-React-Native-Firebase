@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function Login({ navigation }) {
+    let [userData, setUserData] = useState([])
     const initialData = {
         email: '',
         password: ''
@@ -24,24 +25,38 @@ function Login({ navigation }) {
                 // console.log(res.user)
                 ToastAndroid.show('User Login Successfully', ToastAndroid.SHORT)
                 setModel(initialData)
-                setTimeout(() => {
-                    navigation.navigate('Home')
-                }, 200);
+                // setTimeout(() => {
+                //     navigation.navigate('Home')
+                // }, 200);
 
                 const storeData = async () => {
                     try {
                         const jsonValue = JSON.stringify(res.user)
                         await AsyncStorage.setItem('LoginUser', jsonValue)
+                        console.log('Data stored', jsonValue)
                     } catch (e) {
                         // saving error
+                        console.log('Data not stored')
                     }
                 }
 
                 storeData()
+
+                const getData1 = async () => {
+                    try {
+                        const jsonValue = await AsyncStorage.getItem('LoginUser')
+                        // const abc = JSON.parse(jsonValue)
+                        setUserData(JSON.parse(jsonValue))
+                        console.log('Home Login Data', JSON.parse(jsonValue))
+                        // return jsonValue != null ? console.log('Home Console', JSON.parse(jsonValue)) : null;
+                    } catch (e) {
+                        // error reading value
+                    }
+                }
+                getData1()
             })
             .catch(err => {
                 setIsLoading(false)
-                ToastAndroid.show(err, ToastAndroid.SHORT)
                 console.log(err)
             })
     }
@@ -49,6 +64,7 @@ function Login({ navigation }) {
     return (
         <>
             <View style={[styles.bgLight, { height: '100%', alignItems: 'center', paddingTop: '30%' }]}>
+                <Text style={[styles.colorDark, { fontSize: 26, fontWeight: 'bold', fontSize: 26 }]}>{userData ? userData.email : ''}</Text>
                 <Text style={[styles.colorDark, { fontSize: 26, fontWeight: 'bold', fontSize: 26 }]}>LOGIN</Text>
                 <Icon name='person' size={80} color='#06283D' />
                 <View style={{ width: '100%', paddingTop: 25, paddingHorizontal: 20 }}>
