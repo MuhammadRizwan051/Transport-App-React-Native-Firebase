@@ -25,9 +25,9 @@ function Login({ navigation }) {
                 // console.log(res.user)
                 ToastAndroid.show('User Login Successfully', ToastAndroid.SHORT)
                 setModel(initialData)
-                // setTimeout(() => {
-                //     navigation.navigate('Home')
-                // }, 200);
+                setTimeout(() => {
+                    navigation.navigate('Home')
+                }, 200);
 
                 const storeData = async () => {
                     try {
@@ -41,19 +41,6 @@ function Login({ navigation }) {
                 }
 
                 storeData()
-
-                const getData1 = async () => {
-                    try {
-                        const jsonValue = await AsyncStorage.getItem('LoginUser')
-                        // const abc = JSON.parse(jsonValue)
-                        setUserData(JSON.parse(jsonValue))
-                        console.log('Home Login Data', JSON.parse(jsonValue))
-                        // return jsonValue != null ? console.log('Home Console', JSON.parse(jsonValue)) : null;
-                    } catch (e) {
-                        // error reading value
-                    }
-                }
-                getData1()
             })
             .catch(err => {
                 setIsLoading(false)

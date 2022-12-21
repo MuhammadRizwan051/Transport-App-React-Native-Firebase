@@ -3,11 +3,13 @@ import { View, Text, TouchableOpacity, ScrollView, Image, ActivityIndicator } fr
 import database from '@react-native-firebase/database'
 import styles from '../styling'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Home = ({ navigation }) => {
     // let obj = route.params
     // console.log(route.params)
+    let [userData, setUserData] = useState([])
 
     let [dataLoader, setDataLoader] = useState(false)
     let [list, setList] = useState([])
@@ -23,30 +25,31 @@ const Home = ({ navigation }) => {
             })
     }
 
-    // useEffect(() => {
-    //     getData()
-    // }, [])
 
     const getData1 = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('LoginUser')
-            const abc = JSON.parse(jsonValue)
-            console.log('Home Login Data', abc)
+            // const abc = JSON.parse(jsonValue)
+            setUserData(JSON.parse(jsonValue))
+            console.log('Home', JSON.parse(jsonValue))
             // return jsonValue != null ? console.log('Home Console', JSON.parse(jsonValue)) : null;
         } catch (e) {
             // error reading value
+            console.log(e)
         }
     }
 
-    getData1()
-
+    useEffect(() => {
+        getData()
+        getData1()
+    }, [])
     // console.log('list', list)
 
 
     return (
         <>
             <View style={[styles.bgDark, { paddingVertical: 10, paddingHorizontal: 10 }]}>
-                <Text style={[styles.colorWhite, { textAlign: 'center', fontSize: 26, fontWeight: 'bold' }]}>Transport</Text>
+                <Text style={[styles.colorWhite, { textAlign: 'center', fontSize: 26, fontWeight: 'bold' }]}>{userData.email}</Text>
             </View>
             <View style={[styles.bgLight, { height: '100%', paddingHorizontal: 20, paddingVertical: 20 }]}>
                 <View>
